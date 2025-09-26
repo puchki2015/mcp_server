@@ -49,3 +49,14 @@ if __name__ == "__main__":
     #  as "http://localhost:8897/mcp"
 
     #Now for production deployement in the cloud, change it to transport="sse"
+
+
+    ### use render.com for production deployment
+
+
+    #########################IMPORTANT###############################
+
+    ###render.com takes the code from github and deploy it,,,,so need to create a github repo 
+    #"https://github.com/puchki2015/mcp_server"
+
+    #Deploy webservice
