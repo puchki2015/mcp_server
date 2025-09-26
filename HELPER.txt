@@ -1,0 +1,50 @@
+you run this command for docker build
+
+docker build . -t simple-binance-mcp
+
+docker image ls
+
+docker run -p 8004:8000 simple-binance-mcp
+
+
+
+Now open a new terminal and execute npx @modelcontextprotocol/inspector@latest
+
+Once the mcpinspector is up and running to the page which has autoopened and select transport type as stramable https and url as 
+http://localhost:8004/mcp ( as it is streamable-https, it is ending with mcp. for sse it will be /sse)
+
+
+
++++++++++++++++++++++++++++++++++++++++++++
+
+PUBLISH THE IMAGE TO THE GITHUB REGISTRY SO THAT IT CAN BE ACCESSED BY THE WHOLE WORLD
+
+
+STEP 1: GO TO YOUR GITHUB PAGE AND CREATE A TOKEN BY GOING TO YOUR accounts--> settings-->developer settings
+-->personal access token-->tokens classic-->generate new token--> select all repo access,write and delete packages
+
+token is :     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
+
+put this in a environmemt by running below command:
+
+PS C:\Users\agniv\OneDrive\Desktop\MCP_SERVER\mcp_server> [Environment]::SetEnvironmentVariable("GITHUB_TOKEN","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","User")
+
+Now go to the venv and that particular folder: 
+(mcp_server) PS C:\Users\agniv\OneDrive\Desktop\MCP_SERVER\mcp_server\mcp_with_docker> 
+
+docker buildx build --platform linux/amd64 -t simple-binance-mcp -t ghcr.io/puchki2015/mcp_server . --load
+
+docker push ghcr.io/puchki2015/mcp_server
+
+Go to github-->Packages--> You will see deployed package
+
+++++++++++++++++++++++++++++++++++++++++++++
+
+DEPLOY IMAGE INTO PRODUCTION
+1.
+gO TO RENDER.COM-->wEBSERVICE-->eXISTING iMAGE --> PUT ghcr.io/puchki2015/mcp_server
+
+++++++++++++++++++++++++++++++++++++++++++++
+
+
+
